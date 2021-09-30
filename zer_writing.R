@@ -7,9 +7,6 @@ df <- data.frame()
 
 i = 1
 for (value in json$TT$dates){
-  #exists(value$delta$confirmed)
-  # var <- value$delta$confirmed
-  # print(var)
   new_row <- c('INDIA', 
                names(json$TT$dates)[i], 
                if(is.null(value$delta$confirmed))"0" else value$delta$confirmed,
@@ -23,9 +20,6 @@ for (value in json$TT$dates){
 }
 
 names(df) <- c("Area", "Date","Daily-Confirmed", "Daily-Deceased","Daily-Vaccinated1","Daily-Vaccinated2","Total-Vaccinated1","Total-Vaccinated2")
-
-n<-dim(df)[1]
-df<-df[1:(n-20),]
 
 write.table(df,file="19BDS0117temp.csv",sep=",",row.names = FALSE,append=TRUE)
 
